@@ -61,11 +61,10 @@ protected:
 /// \tparam POLICY class implementing AbstractPolicyHolder
 /// \tparam BASE class or type to use as a base class
 template <class POLICY, class BASE, class POLICY_INTERFACE = typename BASE::PolicyInterface>
-class ConcretePolicyHolder : public BASE, protected POLICY
+class ConcretePolicyHolder : public BASE, public POLICY
 {
 public:
 	virtual ~ConcretePolicyHolder() {}
-protected:
 	const POLICY_INTERFACE & GetPolicy() const {return *this;}
 	POLICY_INTERFACE & AccessPolicy() {return *this;}
 };
